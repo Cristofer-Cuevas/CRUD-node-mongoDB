@@ -12,4 +12,4 @@ const PersonajeSchema = new Schema({
    return user;
 }; */
 
-export const personajeModel = model('Personaje', PersonajeSchema);
+export const personajeRepository = model('Personaje', PersonajeSchema);

@@ -1,26 +1,26 @@
 import { Request, Response } from "express";
-import { personajeModel } from "../models/personaje.entity";
+import { personajeRepository } from "../models/personaje.entity";
 
 export const retrieve = async (req: Request, res: Response) => {
     const { role } = req.params;
 
     const personajes = role ?
-        await personajeModel.find({ role })
-        : await personajeModel.find();
+        await personajeRepository.find({ role })
+        : await personajeRepository.find();
 
     res.json(personajes);
 }
 
 export const retrieveById = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const personaje = await personajeModel.findById(id);
+    const personaje = await personajeRepository.findById(id);
     res.json(personaje);
 }
 
 export const create = async (req: Request, res: Response) => {
     const { nombre, alte, role } = req.body;
 
-    const personaje = await personajeModel.create({
+    const personaje = await personajeRepository.create({
         nombre,
         alte,
         role
@@ -35,7 +35,7 @@ export const update = async (req: Request, res: Response) => {
 
     const newDataPersonaje = { nombre, alte, role };
 
-    const updatedPersonaje = await personajeModel
+    const updatedPersonaje = await personajeRepository
         .findByIdAndUpdate(id, newDataPersonaje);
 
     res.json(newDataPersonaje);
@@ -44,7 +44,7 @@ export const update = async (req: Request, res: Response) => {
 export const remove = async (req: Request, res: Response) => {
     const { id } = req.params;
 
-    const removedPersonaje = await personajeModel.findByIdAndDelete(id);
+    const removedPersonaje = await personajeRepository.findByIdAndDelete(id);
     //const removedPersonaje = await  personajeModel.findByIdAndRemove(id);
 
     res.json(removedPersonaje);
