@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-dbConnection()
+dbConnection();
 
 app.get('/', (req: any, res: any) => {
     res.json('ok');

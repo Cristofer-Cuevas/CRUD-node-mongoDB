@@ -1,9 +1,9 @@
 import { Schema, model } from 'mongoose';
 
 const PersonajeSchema = new Schema({
-    name: { type: String, require: true },
-    alte: { type: String, require: true },
-    role: { type: String, require: true },
+  nombre: { type: String, require: true },
+  alte: { type: String, require: true, unique: true },
+  role: { type: String, require: true },
 });
 
 /* UserSchema.methods.toJSON = function () {

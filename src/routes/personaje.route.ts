@@ -5,7 +5,8 @@ import { create, remove, retrieve, retrieveById, update } from '../controllers/p
 export const personajeRoute = Router();
 
 personajeRoute.get('/', retrieve);
-personajeRoute.get('/:id', retrieveById);
+personajeRoute.get('/:role', retrieve);
+personajeRoute.get('/byId/:id', retrieveById);
 personajeRoute.post('/', create);
 personajeRoute.put('/:id', update);
 personajeRoute.delete('/:id', remove);
