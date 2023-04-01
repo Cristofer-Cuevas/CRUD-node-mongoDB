@@ -1,9 +1,9 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 
 const PersonajeSchema = new Schema({
-  nombre: { type: String, require: true },
-  alte: { type: String, require: true, unique: true },
-  role: { type: String, require: true },
+    nombre: { type: String, require: true },
+    alte: { type: String, require: true, unique: true },
+    role: { type: String, require: true },
 });
 
 /* UserSchema.methods.toJSON = function () {
@@ -12,4 +12,4 @@ const PersonajeSchema = new Schema({
    return user;
 }; */
 
-export const personajeRepository = model('Personaje', PersonajeSchema);
+export const personajeRepository = model("Personaje", PersonajeSchema);

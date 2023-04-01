@@ -4,18 +4,16 @@ import { personajeRepository } from "../models/personaje.entity";
 export const retrieve = async (req: Request, res: Response) => {
     const { role } = req.params;
 
-    const personajes = role ?
-        await personajeRepository.find({ role })
-        : await personajeRepository.find();
+    const personajes = role ? await personajeRepository.find({ role: role }) : await personajeRepository.find();
 
     res.json(personajes);
-}
+};
 
 export const retrieveById = async (req: Request, res: Response) => {
     const { id } = req.params;
     const personaje = await personajeRepository.findById(id);
     res.json(personaje);
-}
+};
 
 export const create = async (req: Request, res: Response) => {
     const { nombre, alte, role } = req.body;
@@ -23,11 +21,11 @@ export const create = async (req: Request, res: Response) => {
     const personaje = await personajeRepository.create({
         nombre,
         alte,
-        role
+        role,
     });
 
     res.json(personaje);
-}
+};
 
 export const update = async (req: Request, res: Response) => {
     const { id } = req.params;
@@ -35,11 +33,10 @@ export const update = async (req: Request, res: Response) => {
 
     const newDataPersonaje = { nombre, alte, role };
 
-    const updatedPersonaje = await personajeRepository
-        .findByIdAndUpdate(id, newDataPersonaje);
+    const updatedPersonaje = await personajeRepository.findByIdAndUpdate(id, newDataPersonaje);
 
     res.json(newDataPersonaje);
-}
+};
 
 export const remove = async (req: Request, res: Response) => {
     const { id } = req.params;
@@ -48,4 +45,4 @@ export const remove = async (req: Request, res: Response) => {
     //const removedPersonaje = await  personajeModel.findByIdAndRemove(id);
 
     res.json(removedPersonaje);
-}
+};
